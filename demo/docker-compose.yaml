@@ -1,0 +1,47 @@
+services:
+  web1:
+    image: pstu/students
+    ports:
+      - "8081:8080"
+  web2:
+    image: pstu/students
+    ports:
+      - "8082:8080"
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - /home/dari/IdeaProjects/demo1/demo/nginx:/etc/nginx/conf.d
+    links:
+      - web1
+      - web2
+  redis:
+    image: redis:7.2.3
+    container_name: my-redis-container
+    ports:
+      - "6380:6379"
+    restart: always
+    networks:
+      - redis-network
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test
+    ports:
+      -"5432:5432"
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: email@domain.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+
