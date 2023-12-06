@@ -13,9 +13,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 public class HelloController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
-    int counter=0;
-    private String keyCount="count";
-    private Long count=0L;
+    int counter = 0;
+    private String keyCount = "count";
+    private Long count = 0L;
 
     @Autowired
     private StringRedisTemplate template;
@@ -35,8 +35,8 @@ public class HelloController {
     int hello() throws InterruptedException {
         Thread.sleep(200);
         ++counter;
-         LOGGER.info("Counter: {}", counter);
-         return counter;
+        LOGGER.info("Counter: {}", counter);
+        return counter;
     }
 }
 
