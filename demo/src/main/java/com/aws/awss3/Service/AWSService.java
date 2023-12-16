@@ -22,7 +22,6 @@ public class AWSService {
     public List<String> listAllObjects (String s3BucketName) {
 
         List<String> listOfObjects = new ArrayList<>();
-
         ObjectListing objectListing = amazonS3.listObjects(s3BucketName);
         for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
             listOfObjects.add("Filename: " + objectSummary.getKey() + "LastModified: " + objectSummary.getLastModified() +

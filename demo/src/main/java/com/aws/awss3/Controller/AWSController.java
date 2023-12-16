@@ -4,7 +4,6 @@ import com.aws.awss3.Service.AWSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.util.List;
 
 @RestController
@@ -22,6 +21,7 @@ public class AWSController {
             allFiles.append(files).append("\n");
         return allFiles.toString();
     }
+
 
     @GetMapping("/delete/{fileToDelete}")
     public String deleteFileBucket(@PathVariable String fileToDelete) {
