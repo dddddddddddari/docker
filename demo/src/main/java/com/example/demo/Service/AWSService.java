@@ -1,4 +1,4 @@
-package com.aws.awss3.Service;
+package com.example.demo.Service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model;
@@ -19,6 +19,7 @@ public class AWSService {
     @Autowired
     private AmazonS3 amazonS3;
 
+    //Service class responsible to interact with S3 bucket
     public List<String> listAllObjects (String s3BucketName) {
 
         List<String> listOfObjects = new ArrayList<>();

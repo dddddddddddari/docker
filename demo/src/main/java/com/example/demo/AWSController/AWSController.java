@@ -1,6 +1,6 @@
-package com.aws.awss3.Controller;
+package com.example.demo.AWSController;
 
-import com.aws.awss3.Service.AWSService;
+import com.example.demo.Service.AWSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +12,8 @@ public class AWSController {
 
     @Autowired
     private AWSService awsService;
+
+    //Create list in the bucket
     @GetMapping("createAllFilesBucket")
     public String createAllFilesBucket() {
         List<String> files = awsService.listAllObjects(awsService.getS3BucketName());
@@ -22,7 +24,7 @@ public class AWSController {
         return allFiles.toString();
     }
 
-
+    //Delete list  in the bucket
     @GetMapping("/delete/{fileToDelete}")
     public String deleteFileBucket(@PathVariable String fileToDelete) {
         awsService.deleteObject(awsService.getS3BucketName(), fileToDelete);
