@@ -36,6 +36,8 @@ public class HelloController {
         LOGGER.info("Counter: {}", counter);
         return counter;
     }
+
+    //Uploading data from a file to a queue
     @GetMapping("/queue/files/{file_path}")
     public List<String> files(@PathVariable String file_path) {
         Jedis jedis  = new Jedis();
@@ -58,12 +60,14 @@ public class HelloController {
         Job job = new BatchProperties.Job(lines);
         return job.getId();
     }
+
+    //Processes data in the queue with a delay
     @GetMapping("/queue/process")
-    public String process(){
+    public String process() {
         String job_id;
         job_id = req.queryParams("job_id");
         try {
-            SECONDS.sleep(new Random().nextInt(1,10));
+            SECONDS.sleep(new Random().nextInt(1, 10));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
