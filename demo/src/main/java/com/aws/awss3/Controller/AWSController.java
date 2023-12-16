@@ -1,7 +1,6 @@
 package com.aws.awss3.Controller;
 
 import com.aws.awss3.Service.AWSService;
-import com.springbootstorage.awss3.service.S3FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ public class AWSController {
 
     @Autowired
     private AWSService awsService;
-
     @GetMapping("createAllFilesBucket")
     public String createAllFilesBucket() {
         List<String> files = awsService.listAllObjects(awsService.getS3BucketName());

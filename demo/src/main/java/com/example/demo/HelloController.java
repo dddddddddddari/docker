@@ -18,7 +18,6 @@ public class HelloController {
 
     @Autowired
     private StringRedisTemplate template;
-
     @GetMapping("/helloworld")
     public String helloworld() {
         try {

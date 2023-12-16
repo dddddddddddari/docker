@@ -30,5 +30,4 @@ public class AWSService {
         }
         return listOfObjects;
     }
-
 }
